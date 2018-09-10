@@ -30,16 +30,6 @@ void render() {
 	SDL_RenderPresent(g_pRenderer);
 }
 
-int main() {
-	init();
-	while (g_bRunning) {
-		handleEvents();
-		update();
-		render();
-	}
-	clean();
-}
-
 int main(int argc, char* argv[]) {
 	if (init("Chapter 1 : Setting up SDL", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 640, 480, SDL_WINDOW_SHOWN)) {
 		g_bRunning = true;
