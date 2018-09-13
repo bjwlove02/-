@@ -6,7 +6,7 @@ SDL_Renderer* g_pRenderer = 0;
 int main(int argc, char* args[])
 {
 	if (SDL_Init(SDL_INIT_EVERYTHING) >= 0) {
-		g_pWindow = SDL_CreateWindow("PP01.HelloSDL", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 640, 480, SDL_WINDOW_SHOWN);
+		g_pWindow = SDL_CreateWindow("Game Pramework", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 1024, 768, SDL_WINDOW_SHOWN);
 
 		if (g_pWindow != 0) {
 			g_pRenderer = SDL_CreateRenderer(g_pWindow, -1, 0);

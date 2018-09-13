@@ -1,12 +1,11 @@
 #include <SDL.h>
 
+bool g_bRunning = false;
 SDL_Window* g_pWindow = 0;
 SDL_Renderer* g_pRenderer = 0;
 
 bool init(const char* title, int xpos, int ypos, int width, int height, int flags);
 void render();
-
-bool g_bRunning = false;
 
 int main(int argc, char* argv[]) {
 	if (init("Chapter 1 : Setting up SDL", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 640, 480, SDL_WINDOW_SHOWN)) {
