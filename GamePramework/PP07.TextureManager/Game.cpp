@@ -42,7 +42,7 @@ void Game::update() {
 	m_currentFrame = int(((SDL_GetTicks() / 100) % 6));
 }
 
-void Game::clean() {
+void Game::clean() { 
 	std::cout << "cleaning game\n";
 	SDL_DestroyWindow(m_pWindow);
 	SDL_DestroyRenderer(m_pRenderer);
