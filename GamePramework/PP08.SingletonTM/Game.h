@@ -1,5 +1,3 @@
-
-#pragma once
 #include "TextureManager.h"
 #include <SDL.h>
 #include <SDL_image.h>
@@ -12,8 +10,6 @@ class Game
 	int m_currentFrame;
 
 public:
-	Game() {}
-	~Game() {}
 	bool init(const char* title, int xpos, int ypos, int width, int height, bool fullscreen);
 	void render();
 	void update();

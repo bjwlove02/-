@@ -9,11 +9,16 @@ bool Game::init(const char* title, int xpos, int ypos, int width, int height, bo
 		}
 
 		m_bRunning = true;
-		if (!TheTextureManager::Instance()->load("assets/animate-alpha.png",
-			"animate", m_pRenderer))
+		if (!TheTextureManager::Instance()->load("Assets/animate-alpha.png", "animate", m_pRenderer))
 		{
 			return false;
 		}
+		
+		if (!TheTextureManager::Instance()->load("Assets/tree.png", "tree", m_pRenderer))
+		{
+			return false;
+		}
+
 
 		m_sourceRectangle.w = 128;
 		m_sourceRectangle.h = 82;
@@ -34,15 +39,14 @@ bool Game::init(const char* title, int xpos, int ypos, int width, int height, bo
 
 void Game::render() {
 	SDL_RenderClear(m_pRenderer);
-	TheTextureManager::Instance()->draw("animate", 0, 0, 128, 82,
-		m_pRenderer);
-	TheTextureManager::Instance()->drawFrame("animate", 100, 100,
-		128, 82, 1, m_currentFrame, m_pRenderer);
+	TheTextureManager::Instance()->draw("tree", 0, 0, 500, 500, m_pRenderer);
+	TheTextureManager::Instance()->drawFrame("animate", 230, 400, 128, 82, 1, m_currentFrame, m_pRenderer);
+	//TheTextureManager::Instance()->drawFrame("animate", 100, 100, 128, 82, 1, m_currentFrame, m_pRenderer);
 	SDL_RenderPresent(m_pRenderer);
 }
 
 void Game::update() {
-	m_currentFrame = int(((SDL_GetTicks() / 100) % 6));
+	m_currentFrame = int(((SDL_GetTicks() / 70) % 6));
 
 }
 
