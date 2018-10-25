@@ -5,6 +5,7 @@ bool Game::init(const char* title, int xpos, int ypos, int width, int height, bo
 	m_go = new GameObject();
 	m_player = new Player();
 	m_enemy = new Enemy();
+	m_monster1 = new Monster();
 
 	if (SDL_Init(SDL_INIT_EVERYTHING) >= 0) {
 		m_pWindow = SDL_CreateWindow(title, xpos, ypos, width, height, SDL_WINDOW_SHOWN);
@@ -18,10 +19,13 @@ bool Game::init(const char* title, int xpos, int ypos, int width, int height, bo
 		{
 			return false;
 		}
+		if(!TheTextureManager::Instance()->load("assets/monster.gif",
+			"monster", m_pRenderer))
 
 		m_go->load(100, 100, 128, 82, "animate");
 		m_player->load(300, 300, 128, 82, "animate");
 		m_enemy->load(0, 0, 128, 82, "animate");
+		
 
 		m_gameObjects.push_back(m_go);
 		m_gameObjects.push_back(m_player);
