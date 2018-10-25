@@ -9,6 +9,10 @@ public:
 	virtual void draw(SDL_Renderer* pRenderer);
 	virtual void update();
 	virtual void clean() {}
+	void SetMoveSpeed(int speed)
+	{
+		m_Speed = speed;
+	}
 protected:
 	std::string m_textureID;
 	int m_currentFrame;
@@ -17,4 +21,6 @@ protected:
 	int m_y;
 	int m_width;
 	int m_height;
+	int m_Speed = 1;
+	int m_Count = 0;
 };

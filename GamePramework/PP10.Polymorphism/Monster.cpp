@@ -2,10 +2,12 @@
 
 void Monster::update()
 {
-	if (m_x < 400) {
-		m_x += 1;
+	m_x += m_Speed;
+	m_Count++;
+	if (m_Count > 200)
+	{
+		m_Speed *= -1;
+		m_Count = 0;
 	}
-	else if (m_x > 100) {
-		m_x -= 1;
-	}
+	m_currentFrame = int(((SDL_GetTicks() / 100) % 6));
 }

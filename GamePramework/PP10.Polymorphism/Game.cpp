@@ -5,7 +5,8 @@ bool Game::init(const char* title, int xpos, int ypos, int width, int height, bo
 	m_go = new GameObject();
 	m_player = new Player();
 	m_enemy = new Enemy();
-	m_monster1 = new Monster();
+	m_monster[0] = new Monster();
+	m_monster[1] = new Monster();
 
 	if (SDL_Init(SDL_INIT_EVERYTHING) >= 0) {
 		m_pWindow = SDL_CreateWindow(title, xpos, ypos, width, height, SDL_WINDOW_SHOWN);
@@ -14,22 +15,28 @@ bool Game::init(const char* title, int xpos, int ypos, int width, int height, bo
 		}
 
 		m_bRunning = true;
-		if (!TheTextureManager::Instance()->load("assets/animate-alpha.png",
-			"animate", m_pRenderer))
+		if (!TheTextureManager::Instance()->load("assets/animate-alpha.png", "animate", m_pRenderer))
 		{
 			return false;
 		}
-		if(!TheTextureManager::Instance()->load("assets/monster.gif",
-			"monster", m_pRenderer))
+		if (!TheTextureManager::Instance()->load("assets/monster.png", "monster", m_pRenderer))
+		{
+			return false;
+		}
 
 		m_go->load(100, 100, 128, 82, "animate");
-		m_player->load(300, 300, 128, 82, "animate");
+		m_player->load(400, 300, 128, 82, "animate");
 		m_enemy->load(0, 0, 128, 82, "animate");
-		
+		m_monster[0]->load(100, 200, 128, 82, "monster");
+		m_monster[1]->load(100, 400, 128, 82, "monster");
 
 		m_gameObjects.push_back(m_go);
 		m_gameObjects.push_back(m_player);
 		m_gameObjects.push_back(m_enemy);
+		m_gameObjects.push_back(m_monster[0]);
+		m_gameObjects.push_back(m_monster[1]);
+
+		m_monster[1]->SetMoveSpeed(2);
 
 		m_sourceRectangle.w = 128;
 		m_sourceRectangle.h = 82;
@@ -44,7 +51,6 @@ bool Game::init(const char* title, int xpos, int ypos, int width, int height, bo
 	else {
 		return false;
 	}
-
 	return true;
 }
 
