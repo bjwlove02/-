@@ -1,9 +1,6 @@
 #pragma once
-#include "TextureManager.h"
-#include "GameObject.h"
 #include "Player.h"
 #include "Enemy.h"
-#include 
 
 class Game
 {
@@ -13,6 +10,7 @@ public:
 	void update();
 	void handleEvents();
 	void clean();
+	void quit();
 	bool running() { return m_bRunning; }
 
 	static Game* Instance()

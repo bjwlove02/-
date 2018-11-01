@@ -1,5 +1,6 @@
 #include "Game.h"
 #include <SDL_image.h>
+#include "InputHandler.h"
 
 Game* Game::s_pInstance = 0;
 
@@ -52,6 +53,7 @@ void Game::update() {
 
 void Game::clean() {
 	std::cout << "cleaning game\n"; 
+	TheInputHandler::Instance()->clean();
 	SDL_DestroyWindow(m_pWindow);
 	SDL_DestroyRenderer(m_pRenderer);
 	SDL_RenderPresent(m_pRenderer);
@@ -60,6 +62,7 @@ void Game::clean() {
 
 void Game::handleEvents() {
 	SDL_Event event;
+	TheInputHandler::Instance()->update();
 	if (SDL_PollEvent(&event))
 	{
 		switch (event.type) {

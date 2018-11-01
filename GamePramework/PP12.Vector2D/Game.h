@@ -1,9 +1,6 @@
 #pragma once
-#include "TextureManager.h"
-#include "GameObject.h"
 #include "Player.h"
 #include "Enemy.h"
-#include "Vector2D.h"
 
 class Game
 {
