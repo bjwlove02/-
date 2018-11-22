@@ -13,7 +13,7 @@ bool Game::init(const char* title, int xpos, int ypos, int width, int height, bo
 		m_pWindow = SDL_CreateWindow(title, xpos, ypos, width, height, SDL_WINDOW_SHOWN);
 		if (m_pWindow != 0) {
 			m_pRenderer = SDL_CreateRenderer(m_pWindow, -1, 0);
-		} 
+		}
 
 		m_bRunning = true;
 		if (!TheTextureManager::Instance()->load("assets/monster.png", "monster", m_pRenderer))
