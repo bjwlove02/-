@@ -17,7 +17,7 @@ bool Game::init(const char* title, int xpos, int ypos, int width, int height, bo
 
 		m_bRunning = true;
 		if (!TheTextureManager::Instance()->load("assets/monster.png", "monster", m_pRenderer))
-		{
+		{ 
 			return false;
 		}
 
