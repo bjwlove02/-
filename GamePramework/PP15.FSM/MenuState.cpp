@@ -1,4 +1,6 @@
 #include "MenuState.h"
+
+MenuState* MenuState::s_pInstance = 0;
 const std::string MenuState::s_menuID = "MENU";
 
 void MenuState::update()

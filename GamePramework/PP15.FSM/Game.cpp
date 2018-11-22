@@ -1,6 +1,9 @@
 #include "Game.h"
 #include <SDL_image.h>
 #include "InputHandler.h"
+#include "PlayState.h"
+#include "MenuState.h"
+#include "GameStateMachine.h"
 
 Game* Game::s_pInstance = 0;
 
@@ -13,16 +16,12 @@ bool Game::init(const char* title, int xpos, int ypos, int width, int height, bo
 		}
 
 		m_bRunning = true;
-		if (!TheTextureManager::Instance()->load("assets/animate-alpha.png", "animate", m_pRenderer))
-		{
-			return false;
-		}
 		if (!TheTextureManager::Instance()->load("assets/monster.png", "monster", m_pRenderer))
 		{
 			return false;
 		}
 
-		m_gameObjects.push_back(new Player(new LoaderParams(100, 100, 128, 82, "animate")));
+		m_gameObjects.push_back(new Player(new LoaderParams(100, 100, 128, 82, "monster")));
 		SDL_SetRenderDrawColor(m_pRenderer, 255, 0, 0, 255);
 
 		m_pGameStateMachine = new GameStateMachine();

@@ -3,7 +3,6 @@
 #include "Enemy.h"
 #include "GameStateMachine.h"
 
-GameStateMachine* m_pGameStateMachine;
 class Game
 {
 public:
@@ -14,6 +13,7 @@ public:
 	void clean();
 	bool running() { return m_bRunning; }
 
+	GameStateMachine* m_pGameStateMachine;
 	static Game* Instance()
 	{
 		if (s_pInstance == 0)
