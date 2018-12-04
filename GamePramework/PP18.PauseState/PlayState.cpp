@@ -1,18 +1,20 @@
 #include "PlayState.h"
-#include "Game.h"
 #include "InputHandler.h"
+#include "GameStateMachine.h"
 #include "PauseState.h"
+#include "Game.h"
 
-PauseState* PauseState::ss_pInstance = 0;
-const std::string PlayState::s_playID = "PLAY";
 PlayState* PlayState::s_pInstance = 0;
+const std::string PlayState::s_playID = "PLAY";
 
 void PlayState::update()
 {
 	if (TheInputHandler::Instance()->isKeyDown(
 		SDL_SCANCODE_ESCAPE))
 	{
-		TheGame::Instance()->getStateMachine()->changeState(PauseState::Instance());
+		TheGame::Instance()->getStateMachine()->changeState(
+			PauseState::Instance());
+
 	}
 	for (int i = 0; i < m_gameObjects.size(); i++)
 	{
@@ -56,22 +58,4 @@ bool PlayState::onExit()
 	TheTextureManager::Instance()->clearFromTextureMap("helicopter");
 	std::cout << "exiting PlayState\n";
 	return true;
-}
-
-void SDLGameObject::draw()
-{
-	if (m_velocity.getX() > 0)
-	{
-		TextureManager::Instance()->drawFrame(m_textureID,
-			(Uint32)m_position.getX(), (Uint32)m_position.getY(),
-			m_width, m_height, m_currentRow, m_currentFrame,
-			TheGame::Instance()->getRenderer(),
-			SDL_FLIP_HORIZONTAL);
-	}
-	else {
-		TextureManager::Instance()->drawFrame(m_textureID,
-			(Uint32)m_position.getX(), (Uint32)m_position.getY(),
-			m_width, m_height, m_currentRow, m_currentFrame,
-			TheGame::Instance()->getRenderer());
-	}
 }

@@ -3,6 +3,10 @@
 
 class Enemy : public SDLGameObject
 {
+private:
+	int m_numFrames;
+	void handleInput();
+
 public:
 	Enemy(const LoaderParams* pParams);
 	virtual void draw();

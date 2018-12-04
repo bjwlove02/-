@@ -48,6 +48,7 @@ bool MenuState::onEnter()
 	std::cout << "entering MenuState\n";
 	return true;
 }
+
 bool MenuState::onExit()
 {
 	for (int i = 0; i < m_gameObjects.size(); i++)
