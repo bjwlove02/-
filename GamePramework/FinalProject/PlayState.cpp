@@ -24,6 +24,7 @@ void PlayState::update()
 		TheGame::Instance()->getStateMachine()->changeState(
 			PauseState::Instance());
 	}
+
 }
 
 void PlayState::render()
@@ -48,16 +49,22 @@ bool PlayState::onEnter()
 		"bullet", TheGame::Instance()->getRenderer())) {
 		return false;
 	}
-
+	
 	int random = rand() % 500;
 
 	GameObject* player = new Player(
 		new LoaderParams(500, 100, 128, 55, "helicopter"));
 	GameObject* enemy = new Enemy(
 		new LoaderParams(random, random, 128, 55, "helicopter2"));
-
+	
 	m_gameObjects.push_back(player);
 	m_gameObjects.push_back(enemy);
+	
+	
+		m_gameObjects.push_back(bullet);
+	}
+
+
 	std::cout << "entering PlayState\n";
 	return true;
 }
