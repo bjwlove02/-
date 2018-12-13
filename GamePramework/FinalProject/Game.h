@@ -27,13 +27,15 @@ public:
 
 	GameStateMachine* getStateMachine() { return m_pGameStateMachine; }
 	SDL_Renderer* getRenderer() const { return m_pRenderer; }
+	std::vector<GameObject*>* GetGameObjects() {
+		return &m_gameObjects;
+	}
 private:
 	Game() {}
 	static Game* s_pInstance;
 
 	SDL_Window * m_pWindow;
 	SDL_Renderer* m_pRenderer;
-
 	std::vector<GameObject*> m_gameObjects;
 
 	bool m_bRunning;

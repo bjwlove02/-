@@ -10,10 +10,6 @@ void Player::handleInput()
 	m_velocity = *target - m_position;
 	m_velocity /= 50;
 
-	if (InputHandler::Instance()->isKeyDown(SDL_SCANCODE_SPACE)) {
-		GameObject* bullet = new Bullet(
-			new LoaderParams(200, 200, 128, 55, "bullet"));
-	}
 }
 
 Player::Player(const LoaderParams* pParams) : SDLGameObject(pParams)
@@ -22,6 +18,7 @@ Player::Player(const LoaderParams* pParams) : SDLGameObject(pParams)
 
 void Player::draw()
 {
+
 	SDLGameObject::draw(); // we now use SDLGameObject
 }
 

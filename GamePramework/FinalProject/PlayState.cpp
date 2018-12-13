@@ -37,6 +37,7 @@ void PlayState::render()
 
 bool PlayState::onEnter()
 {
+
 	if (!TheTextureManager::Instance()->load("assets/helicopter.png",
 		"helicopter", TheGame::Instance()->getRenderer())) {
 		return false;
@@ -50,20 +51,20 @@ bool PlayState::onEnter()
 		return false;
 	}
 	
-	int random = rand() % 500;
+	int random = rand() % 1000;
 
 	GameObject* player = new Player(
-		new LoaderParams(500, 100, 128, 55, "helicopter"));
-	GameObject* enemy = new Enemy(
-		new LoaderParams(random, random, 128, 55, "helicopter2"));
+		new LoaderParams(1400, 100, 128, 55, "helicopter"));
+		GameObject* enemy = new Enemy(
+			new LoaderParams(random, random, 128, 55, "helicopter2"));
+		m_gameObjects.push_back(enemy);
+	GameObject* bullet = new Bullet(
+		new LoaderParams(100, 100, 500, 500, "bullet"));
 	
 	m_gameObjects.push_back(player);
-	m_gameObjects.push_back(enemy);
-	
-	
+	if (InputHandler::Instance()->isKeyDown(SDL_SCANCODE_SPACE)) {
 		m_gameObjects.push_back(bullet);
 	}
-
 
 	std::cout << "entering PlayState\n";
 	return true;
